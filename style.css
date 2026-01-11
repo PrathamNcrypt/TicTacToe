@@ -1,0 +1,98 @@
+body {
+    color: #ff0054;
+    background-color: #003049;
+    text-align: center;
+    /* --- NEW CHANGES BELOW --- */
+    display: flex;          /* ??? */
+    flex-direction: column; /* Keeps the title above the game */
+    justify-content: center; /* Centers vertically */
+    align-items: center;    /* Centers horizontally */
+    min-height: 100vh;      /* Takes up 100% of the viewport height */
+    margin: 0;             /* Removes default browser spacing */
+    
+}
+
+.game {
+    height: 60vmin;
+    width: 60vmin;
+    display: flex;  /* in one single horizontal row. Without anything else */
+    flex-wrap: wrap;  /*create 3x3 grid*/
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vmin;
+    /* margin: auto;  Optional: extra insurance for centering */
+}
+
+.box {
+    background-color: #fdf0d5;
+    height: 18vmin;
+    width: 18vmin;
+    border-radius: 1rem;
+    border: none; /* Removes the default grey button border */
+    cursor: pointer;
+    font-size: 8vmin; /* Adjusts X and O size relative to box */
+}
+
+.resetbox {
+    height: 10vmin;
+    width: 25vmin; /* Increased slightly so text doesn't feel cramped */
+    border-radius: 3vmin;
+    cursor: pointer; /* 'pointer' is standard for buttons; 'grab' is usually for moving items */
+    font-size: larger;
+    font-style: italic;
+    
+    /* --- THE CHANGE --- */
+    margin-top: 5vmin; /* Creates a gap of 5% of the screen size */
+    border: none;
+    background-color: #f04c4c;
+    color: #0e0e08;
+    
+}
+
+/* Combined your two hover states into one clean block */
+button:hover {
+    background-color: #669bbc; 
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.6);
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+    
+}
+
+.msg{
+    color:#fdf0d5;
+}
+
+.newbox{
+    border-radius: 3vmin;
+    height: 7vmin;
+    background-color:khaki;
+    color:rgb(99, 2, 2);
+}
+
+.hide{
+    display : none;
+    
+}
+
+.mode{
+align-self: flex-start;
+margin-left: 20px;
+border-radius: 5vmin;
+height: 5vmin;
+background-color: #0e0e08;
+color:aliceblue;
+justify-content: left;
+
+
+}
+
+.lightmode{
+align-self: flex-start;
+margin-left: 20px;
+border-radius: 5vmin;
+height: 5vmin;
+
+justify-content: left;
+
+
+}
