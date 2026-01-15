@@ -1,9 +1,9 @@
 body {
     color: #ff0054;
-    background-color: #003049;
+    background-color: #003049;  
     text-align: center;
-    /* --- NEW CHANGES BELOW --- */
-    display: flex;          /* ??? */
+                             /* --- NEW CHANGES BELOW --- */
+    display: flex;          
     flex-direction: column; /* Keeps the title above the game */
     justify-content: center; /* Centers vertically */
     align-items: center;    /* Centers horizontally */
@@ -30,18 +30,18 @@ body {
     border-radius: 1rem;
     border: none; /* Removes the default grey button border */
     cursor: pointer;
-    font-size: 8vmin; /* Adjusts X and O size relative to box */
+    font-size: 8vmin; 
 }
 
 .resetbox {
     height: 10vmin;
-    width: 25vmin; /* Increased slightly so text doesn't feel cramped */
+    width: 25vmin; 
     border-radius: 3vmin;
-    cursor: pointer; /* 'pointer' is standard for buttons; 'grab' is usually for moving items */
+    cursor: pointer; 
     font-size: larger;
     font-style: italic;
     
-    /* --- THE CHANGE --- */
+   
     margin-top: 5vmin; /* Creates a gap of 5% of the screen size */
     border: none;
     background-color: #f04c4c;
@@ -49,7 +49,7 @@ body {
     
 }
 
-/* Combined your two hover states into one clean block */
+
 button:hover {
     background-color: #669bbc; 
     box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.6);
@@ -75,24 +75,39 @@ button:hover {
 }
 
 .mode{
-align-self: flex-start;
-margin-left: 20px;
+/* align-self: flex-start; */
+margin-top: 3vmin;
+
+/* margin-left: 20px; */
 border-radius: 5vmin;
 height: 5vmin;
 background-color: #0e0e08;
 color:aliceblue;
-justify-content: left;
 
+align-items: center;
 
 }
 
-.lightmode{
-align-self: flex-start;
-margin-left: 20px;
-border-radius: 5vmin;
-height: 5vmin;
 
-justify-content: left;
+.play{
+    height: 20vmin;
+    width: 20vmin; 
 
+     
+    background-color: #f04c4c;
+    text-shadow: #fdf0d5;
+    border-radius: 50%;
+    cursor: pointer; 
+    font-style: italic;
+    text-align: center;
+}
 
+.hide3{
+    display : none;
+    
+}
+
+.hide4{
+    display : none;
+    
 }

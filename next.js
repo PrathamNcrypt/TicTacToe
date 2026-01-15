@@ -6,6 +6,18 @@ let newbox = document.querySelector(".newbox");
 let darkmode = document.querySelector(".mode");
 let lightmode = document.querySelector(".lightmode");
 let body = document.querySelector("body");
+let play = document.querySelector(".play");
+let container2 = document.querySelector(".container2");
+let container3 = document.querySelector(".container3");
+
+const removePlay=()=>{
+  container2.style.display = "none";
+  container3.classList.remove("hide3")
+  resetbox.classList.remove("hide4")
+};
+
+play.addEventListener("click", removePlay);
+
 
 darkmode.innerText = "Mode : Dark Mode";
 currentmode = "dark";
@@ -48,18 +60,20 @@ const showWinner = (winner) => {
 
 const disableboxes = () => {
   boxes.forEach((box) => {
-    //boxes.forEach(...): Since boxes is a collection of all 9 buttons, you must tell JavaScript to "go to each box and set its disabled property to true.
+    
     box.disabled = true;
   });
 };
 
-const enableboxes = () => {
-  boxes.forEach((box) => {
-    box.disabled = false;
-    box.innerText = "";
-  });
-  container.classList.add("hide");
-};
+// const enableboxes = () => {
+//   boxes.forEach((box) => {
+//     box.disabled = false;
+//     box.innerText = "";
+//   });
+//   container.classList.add("hide");
+// };
+
+let winnerFound = false;
 
 const checkWinner = () => {
   for (let pattern of wincode) {
@@ -69,6 +83,7 @@ const checkWinner = () => {
 
     if (patt1 != "" && patt2 != "" && patt3 != "") {
       if (patt1 === patt2 && patt2 === patt3) {
+        winnerFound = true;
         console.log(`Congrats ${patt1} is Winner`);
         showWinner(patt1);
       }
@@ -95,26 +110,72 @@ const Dmode = () => {
     });
     darkmode.style.backgroundColor = "white";
     darkmode.style.color = "black";
-    msg.style.color = "#f7f7f2"
+    msg.style.color = "#f7f7f2";
   } else {
     darkmode.innerText = "Mode : Dark Mode";
     body.style.backgroundColor = "white";
     boxes.forEach((box) => {
       box.style.backgroundColor = "#ef233c";
-    //   if(box.innerText = "X"){
-    //     box.forEach.style.color = "white";
-      
-    // }else{
-    //   box.style.color = "#00a7e1";
-    // }
+      //   if(box.innerText = "X"){
+      //     box.forEach.style.color = "white";
+
+      // }else{
+      //   box.style.color = "#00a7e1";
+      // }
     });
     darkmode.style.backgroundColor = "black";
     darkmode.style.color = "white";
-    msg.style.color = "#ef233c"
+    msg.style.color = "#ef233c";
   }
 };
 
 darkmode.addEventListener("click", () => {
-Dmode();
+  Dmode();
 });
 
+let i = 0;
+const drawCheck = () => {
+  let i = 0;
+
+  boxes.forEach((box) => {
+    if (box.innerText !== "") {
+      i++;
+    }
+  });
+  if (i === 9 && winnerFound === false) {
+    container.classList.remove("hide");
+    msg.innerText = "Draw";
+  }
+};
+
+addEventListener("click", drawCheck);
+
+// const checkWinner2 = () => {
+//   for (let pattern of wincode) {
+//     let patt1 = boxes[pattern[0]].innerText;
+//     let patt2 = boxes[pattern[1]].innerText;
+//     let patt3 = boxes[pattern[2]].innerText;
+
+//       if (patt1 !== patt2 || patt2 !== patt3 || patt3 !== patt1) {
+//  container.classList.remove("hide");
+//  msg.innerText = "Draw";
+//       }
+
+//      else if(patt1 === patt2 && patt2 === patt3) {
+//         console.log(`Congrats ${patt1} is Winner`);
+//         showWinner(patt1);
+
+//   };
+// };
+// };
+const enableboxes = () => {
+  winnerFound = false; 
+  boxes.forEach((box) => {
+    box.disabled = false;
+    box.innerText = "";
+  });
+  container.classList.add("hide");
+};
+
+
+addEventListener("click", drawCheck);
