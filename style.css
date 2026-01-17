@@ -28,7 +28,7 @@ body {
     height: 18vmin;
     width: 18vmin;
     border-radius: 1rem;
-    border: none; /* Removes the default grey button border */
+    border: none; 
     cursor: pointer;
     font-size: 8vmin; 
 }
@@ -42,7 +42,7 @@ body {
     font-style: italic;
     
    
-    margin-top: 5vmin; /* Creates a gap of 5% of the screen size */
+    margin-top: 5vmin; 
     border: none;
     background-color: #f04c4c;
     color: #0e0e08;
@@ -100,6 +100,8 @@ align-items: center;
     cursor: pointer; 
     font-style: italic;
     text-align: center;
+    border: 2px solid white;
+    
 }
 
 .hide3{
@@ -110,4 +112,87 @@ align-items: center;
 .hide4{
     display : none;
     
+}
+
+.hide5{
+    display : none;
+}
+
+.hide6{
+    display : none;
+}
+
+.play2{
+    height: 20vmin;
+    width: 20vmin; 
+
+     
+    background-color: #f04c4c;
+    text-shadow: #fdf0d5;
+    border-radius: 50%;
+    cursor: pointer; 
+    font-style: italic;
+    text-align: center;
+    margin-top: 2vmin;
+    border: 2px solid white;
+}
+
+
+.game2 {
+    height: 60vmin;
+    width: 60vmin;
+    display: flex;  
+    flex-wrap: wrap;  
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vmin;
+   
+}
+
+.crate{
+    height : 18vmin;
+    width : 18vmin;
+    border-radius: 1vmin;
+    display : flex;
+    flex-wrap: wrap;
+    cursor: grab;
+    border : none;
+    font-size: 12vmin;
+    justify-content: center; /* Centers horizontally (left/right) */
+    align-items: center;     /* Centers vertically (up/down) */
+    background-color: aliceblue;
+    color:chartreuse;
+    filter: hue-rotate(250deg); 
+}
+
+.resetmine{
+    height: 10vmin;
+    width: 25vmin; 
+    border-radius: 3vmin;
+    cursor: pointer; 
+    font-size: larger;
+    font-style: italic;
+    margin-top: 5vmin; 
+    border: none;
+    background-color: chartreuse;
+    color: #0e0e08;
+
+}
+
+/* The animation definition */
+@keyframes spinFlip {
+  0% {
+    transform: scale(1) rotateY(0deg);
+  }
+  50% {
+    transform: scale(1.2) rotateY(180deg);
+  } 
+  100% {
+    transform: scale(1) rotateY(360deg); 
+  } 
+}
+
+
+.flip-anim {
+  animation: spinFlip 0.5s ease-out;
 }
