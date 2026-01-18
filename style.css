@@ -104,27 +104,14 @@ align-items: center;
     
 }
 
-.hide3{
-    display : none;
-    
-}
-
-.hide4{
-    display : none;
-    
-}
-
-.hide5{
-    display : none;
-}
-
-.hide6{
-    display : none;
+.hide3, .hide4, .hide5, .hide6 {
+    display : none !important;
 }
 
 .hide7{
-    display : none;
+    display : none !important;
 }
+ 
 
 .play2{
     height: 20vmin;
