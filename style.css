@@ -51,7 +51,7 @@ body {
 
 
 button:hover {
-    background-color: #669bbc; 
+    background-color: #ffd60a; 
     box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.6);
     transform: scale(1.05);
     transition: all 0.2s ease-in-out;
@@ -119,6 +119,10 @@ align-items: center;
 }
 
 .hide6{
+    display : none;
+}
+
+.hide7{
     display : none;
 }
 
@@ -195,4 +199,8 @@ align-items: center;
 
 .flip-anim {
   animation: spinFlip 0.5s ease-out;
+}
+
+.vault{
+    color :#fdf0d5
 }

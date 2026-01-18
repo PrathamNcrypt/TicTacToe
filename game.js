@@ -9,12 +9,16 @@ let body = document.querySelector("body");
 let play = document.querySelector(".play");
 let container2 = document.querySelector(".container2");
 let container3 = document.querySelector(".container3");
+const clickSound = new Audio("./sounds/click.mp3");
+const xSound = new Audio("./sounds/x.mp3");
+const oSound = new Audio("./sounds/0.mp3");
 
 const removePlay=()=>{
   container2.style.display = "none";
   container3.classList.remove("hide3");
   resetbox.classList.remove("hide4");
   play2.style.display = "none";
+  clickSound.play();
 
 };
 
@@ -44,11 +48,13 @@ boxes.forEach((box) => {
       turn0 = false;
       box.disabled = true;
       box.style.color = "#780000";
+      xSound.play();
     } else {
       box.innerText = "0";
       turn0 = true;
       box.disabled = true;
       box.style.color = "#1976d2";
+      oSound.play();
     }
     checkWinner();
   });
@@ -109,9 +115,11 @@ const Dmode = () => {
     darkmode.style.backgroundColor = "white";
     darkmode.style.color = "black";
     msg.style.color = "#f7f7f2";
+    scoreShow.style.color = "white";
   } else {
     darkmode.innerText = "Switch to Dark Mode 🌙";
     body.style.backgroundColor = "white";
+    scoreShow.style.color = "black";
     boxes.forEach((box) => {
       box.style.backgroundColor = "#ef233c";
       });
@@ -165,9 +173,11 @@ let crates = document.querySelectorAll(".crate");
 let play2 = document.querySelector(".play2");
 let pack = document.querySelector(".pack");
 let resetMine = document.querySelector(".resetmine");
-const collectSound = new Audio("/sounds/collect.mp3");
-const diaSound = new Audio("/sounds/dia.mp3");
-const bombSound = new Audio("/sounds/faaah.mp3");
+let gembox = document.querySelector(".gembox");
+let scoreShow = document.querySelector(".vault");
+const collectSound = new Audio("./sounds/collect.mp3");
+const diaSound = new Audio("./sounds/dia.mp3");
+const bombSound = new Audio("./sounds/faaah.mp3");
 
 
 const enableCrate = () =>{
@@ -188,23 +198,70 @@ resetMine.addEventListener("click", () => {
 
   if (resetMine.innerText.includes("COLLECT")) {
         collectSound.play();
-    }
+        
+      }
   
   
   crates.forEach((crate) => {
     crate.innerText = "";
     crate.style.filter = "";
     crate.style.backgroundColor = ""; 
+    crate.style.backgroundColor = ""; 
+    crate.style.boxShadow = "";
     crate.classList.remove("flip-anim");   
   });
 
- 
+
   resetMine.innerText = "COLLECT";
   resetMine.style.backgroundColor = "chartreuse";
   
   
   enableCrate();
 });
+
+let diaCount = 0;
+let xvalue = 0;
+
+const stakes = () => {
+  const value= [                                     
+    1,
+    100,  // 1st Diamond
+    150,  // 2nd
+    250,  // 3rd
+    400, // 4th
+    600, // 5th
+    900, // 6th
+    1300, //7th
+    1900, // 8th
+    2800, // 9th
+  ];
+  return value[diaCount];
+}
+
+const xValues=()=>{
+const multipliers = [
+    "1.00x",  
+    "1.50x",  
+    "2.50x",  
+    "4.00x",  
+    "6.00x",  
+    "9.00x",  
+    "13.00x", 
+    "19.00x", 
+    "28.00x", 
+    "42.00x"  
+];
+ return multipliers[xvalue];
+}
+
+
+const score = () => {
+  let result = stakes();
+  let vault = 1;
+  let finalResult = vault*result;
+  return finalResult;
+}
+
 
 
 // crates.forEach((crate)=>{
@@ -229,13 +286,14 @@ play2.addEventListener("click", ()=>{
   container2.style.display = "none";
   pack.classList.remove("hide5");
   resetMine.classList.remove("hide6");
+  gembox.classList.remove("hide7");
+  clickSound.play();
 });
 
 
 const showCard = () => {
   const randomIdx = Math.floor(Math.random()*5);
   return randomIdx;
-
 };
 
 
@@ -251,19 +309,36 @@ crates.forEach((crate) => {
       crate.innerText = "💎";
       crate.disabled = true;
       diaSound.play();
+      stakes();
+      xValues();
+      diaCount++;
+      xvalue++;
+      console.log(diaCount);
+      console.log(stakes());
+      score();
+      console.log(score());
+      scoreShow.innerText = `VAULT : ${score()}💎 (NEXT: ${xValues()})`;
       
     } else {
       console.log("bomb");
-      crate.style.filter = "hue-rotate(140deg)";
+      crate.style.filter = "none";
+      crate.style.backgroundColor = "#ff0000"; 
+      crate.style.boxShadow = "0 0 20px #ff0000";
       crate.innerText = "💣";
       crate.disabled = true;
       resetMine.innerText = "RESET";
       resetMine.style.fontWeight = "bold";
       resetMine.style.backgroundColor = "#f04c4c";
+      diaCount = 0;
+      xvalue = 0;
       disableCrate();
       bombSound.play();
+      scoreShow.innerText = "VAULT : 0💎";
     }
   });
 });
+
+
+
 
 
